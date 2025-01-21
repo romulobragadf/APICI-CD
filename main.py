@@ -55,3 +55,7 @@ def listar_municipios(uf: str = Query(..., description="UF do estado (ex: SP, RJ
     dados = response.json()
     municipios = [{"id": item["id"], "nome": item["nome"]} for item in dados]
     return {"uf": uf.upper(), "municipios": municipios}
+
+@app.get("/welcome")
+async def welcome(name: str):
+    return {"message": f"Bem-vindo(a), {name}!"}
